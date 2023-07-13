@@ -211,7 +211,7 @@ class TimeSynchronizer(SimpleFilter):
         self.queues = [{} for f in fs]
         self.latest_stamps = [rospy.Time(0) for f in fs]
         self.input_connections = [
-            f.registerCallback(self.add, q, i_q)
+            self.registerCallback(self.add, q, i_q)
             for i_q, (f, q) in enumerate(zip(fs, self.queues))]
 
     def add(self, msg, my_queue, my_queue_index=None):
